@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ajith Movie Cards — HTML & CSS</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg: #0f1724;
+      --card: #0b1220;
+      --accent: #ff6b6b;
+      --muted: #98a0b3;
+      --glass: rgba(255,255,255,0.04);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,Segoe UI,Roboto,"Helvetica Neue",Arial;
+      background: linear-gradient(180deg,#071021 0%, #071426 60%);
+      color:#e6eef8;
+      padding:32px;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+    .container{
+      max-width:1200px;
+      margin:0 auto;
+    }
+
+    h1{
+      margin:0 0 18px 0;
+      font-size:28px;
+      font-weight:700;
+      color: #f8fafc;
+    }
+    p.lead{
+      margin:0 0 28px 0;
+      color:var(--muted);
+    }
+
+    /* Grid */
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(auto-fill,minmax(240px,1fr));
+      gap:20px;
+    }
+
+    /* Card */
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+      border-radius:14px;
+      overflow:hidden;
+      box-shadow: 0 6px 18px rgba(2,6,23,0.6);
+      transition: transform 220ms ease, box-shadow 220ms ease;
+      display:flex;
+      flex-direction:column;
+      height:100%;
+      border: 1px solid rgba(255,255,255,0.03);
+    }
+    .card:hover{transform:translateY(-8px); box-shadow: 0 16px 36px rgba(2,6,23,0.7)}
+
+    .poster{
+      width:100%;
+      aspect-ratio: 2/3;
+      object-fit:cover;
+      display:block;
+      flex-shrink:0;
+    }
+
+    .card-body{
+      padding:14px;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      flex:1 1 auto;
+    }
+
+    .title-row{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:8px;
+    }
+    .title{
+      font-weight:700;
+      font-size:16px;
+      line-height:1.1;
+      margin:0;
+    }
+    .year{color:var(--muted);font-size:13px}
+
+    .meta{
+      display:flex;
+      gap:8px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+    .chip{
+      font-size:12px;
+      padding:6px 8px;
+      background:var(--glass);
+      border-radius:999px;
+      color:var(--muted);
+    }
+
+    .rating{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      color:var(--accent);
+      font-weight:600;
+      font-size:14px;
+    }
+
+    .desc{
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.4;
+      margin:0 0 8px 0;
+      flex:1 1 auto;
+    }
+
+    .actions{
+      display:flex;
+      gap:8px;
+      align-items:center;
+    }
+    .btn{
+      appearance:none;
+      border:0;
+      padding:8px 12px;
+      border-radius:10px;
+      font-weight:600;
+      cursor:pointer;
+      background:transparent;
+      color:var(--accent);
+      border:1px solid rgba(255,107,107,0.18);
+      backdrop-filter: blur(6px);
+    }
+    .btn.secondary{color:var(--muted); border:1px solid rgba(255,255,255,0.04)}
+
+    /* footer row */
+    .card-footer{
+      padding:12px 14px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      border-top:1px solid rgba(255,255,255,0.02);
+      background: linear-gradient(180deg, rgba(255,255,255,0.01), transparent);
+    }
+
+    /* small screen tweaks */
+    @media (max-width:420px){
+      body{padding:18px}
+      .title{font-size:15px}
+    }
+
+    /* small utility star */
+    .stars{display:inline-block;}
+    .star{font-size:12px;margin-right:2px}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Movie cards</h1>
+    <p class="lead">A simple responsive set of movie cards made with just HTML and CSS. Replace poster URLs and text with your data.</p>
+
+    <div class="grid">
+
+      <!-- Card 1 -->
+      <article class="card">
+        <img class="poster" src="https://files.prokerala.com/movies/pics/800/vedhalam-movie-posters-46393.jpg" alt="Movie poster">
+        <div class="card-body">
+          <div class="title-row">
+            <h3 class="title">VEDHALAM</h3>
+            <div class="year">2015</div>
+          </div>
+
+          <div class="meta">
+            <div class="chip">Drama</div>
+            <div class="chip">Action</div>
+            <div class="rating"><span class="stars">★★★★☆</span> 8.1</div>
+          </div>
+
+          <p class="desc">A Man hides his original identity and live for his unborn sister</p>
+
+          <div class="actions">
+            <button class="btn">Watch trailer</button>
+            <button class="btn secondary">Save</button>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="chip">2h 9m</div>
+          <div class="chip">PG-13</div>
+        </div>
+      </article>
+
+      <!-- Card 2 -->
+      <article class="card">
+        <img class="poster" src="https://wallpapercave.com/wp/wp6016540.jpg" alt="Movie poster">
+        <div class="card-body">
+          <div class="title-row">
+            <h3 class="title">Arambam</h3>
+            <div class="year">2012</div>
+          </div>
+
+          <div class="meta">
+            <div class="chip">Family </div>
+            <div class="chip">revenge drama</div>
+            <div class="rating"><span class="stars">★★★☆☆</span> 7.4</div>
+          </div>
+
+          <p class="desc">Arjun takes revenge for his bitrail for his family</p>
+
+          <div class="actions">
+            <button class="btn">Watch trailer</button>
+            <button class="btn secondary">Save</button>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="chip">1h 48m</div>
+          <div class="chip">R</div>
+        </div>
+      </article>
+
+      <!-- Card 3 -->
+      <article class="card">
+        <img class="poster" src="https://m.media-amazon.com/images/S/pv-target-images/024a4bcf14d5619ada417c20ac128b23dfcc12b52c35423392808f7fa462f0ea.jpg" alt="Movie poster">
+        <div class="card-body">
+          <div class="title-row">
+            <h3 class="title">Mankatha</h3>
+            <div class="year">2011</div>
+          </div>
+
+          <div class="meta">
+            <div class="chip">cop</div>
+            <div class="chip">heist</div>
+            <div class="rating"><span class="stars">★★★★★</span> 9.0</div>
+          </div>
+
+          <p class="desc">vinayak mahadev hides his identity and plan for heist with his team</p>
+
+          <div class="actions">
+            <button class="btn">Watch trailer</button>
+            <button class="btn secondary">Save</button>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="chip">2h 6m</div>
+          <div class="chip">U</div>
+        </div>
+      </article>
+
+      <!-- Card 4 -->
+      <article class="card">
+        <img class="poster" src="https://i.ytimg.com/vi/nnWmVKOkTMw/maxresdefault.jpg" alt="Movie poster">
+        <div class="card-body">
+          <div class="title-row">
+            <h3 class="title">Billa</h3>
+            <div class="year">2007</div>
+          </div>
+
+          <div class="meta">
+            <div class="chip">gangster</div>
+            <div class="chip">Action</div>
+            <div class="rating"><span class="stars">★★★★☆</span> 8.3</div>
+          </div>
+
+          <p class="desc">A gaster doing every illegal things.</p>
+
+          <div class="actions">
+            <button class="btn">Watch trailer</button>
+            <button class="btn secondary">Save</button>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="chip">2h 2m</div>
+          <div class="chip">A</div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</body>
+</html>
